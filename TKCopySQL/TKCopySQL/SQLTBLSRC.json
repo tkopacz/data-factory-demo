@@ -1,0 +1,31 @@
+﻿{
+  "$schema": "http://datafactories.schema.management.azure.com/schemas/2015-08-01/Microsoft.DataFactory.Table.json",
+  "name": "SQLTBLSRC",
+  "properties": {
+    "type": "AzureSqlTable",
+    "linkedServiceName": "SQLDB1",
+    "structure": [
+      {
+        "name": "data",
+        "type": "String"
+      }
+    ],
+
+    "typeProperties": {
+      "tableName": "tkADFSrc"
+    },
+    "availability": {
+      "frequency": "Day",
+      "interval": 1
+    },
+    "external": true,
+    "policy": {
+      "externalData": {
+        "dataDelay": "00:00:00",
+        "retryInterval": "00:01:00",
+        "retryTimeout": "00:10:00",
+        "maximumRetry": 3
+      }
+    }
+  }
+}

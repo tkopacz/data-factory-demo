@@ -1,0 +1,58 @@
+﻿{
+    "$schema": "http://datafactories.schema.management.azure.com/schemas/2015-08-01/Microsoft.DataFactory.Pipeline.json",
+    "name": "TKSQLSRCDST",
+    "properties": {
+        "description": "CopySQLToSql",
+        "activities": [
+          {
+            "inputs": [
+              {
+                "name": "SQLTBLSRC"
+              }
+            ],
+            "name": "CopyActivityTemplate",
+            "outputs": [
+              {
+                "name": "SQLTBLDEST"
+              }
+            ],
+            "policy": {
+              "concurrency": 1,
+              "executionPriorityOrder": "OldestFirst",
+              "retry": 3,
+              "timeout": "01:00:00"
+            },
+            "scheduler": {
+              "frequency": "Day",
+              "interval": 1
+            },
+            "type": "Copy",
+            "typeProperties": {
+              "sink": {
+                "type": "SqlSink",
+                "sqlWriterStoredProcedureName": "spOverwritetkADFDst",
+                "sqlWriterTableType": "tkADFSrcType",
+                "sqlWriterCleanupScript": "delete from tkADFDst",
+                "storedProcedureParameters": {
+                  "date": {
+                    "value": "2016-01-01T00:00:00Z"
+                  },
+                  "stringData": {
+                    "value": "str1"
+                  }
+                },
+                "writeBatchSize": 0,
+                "writeBatchTimeout": "00:00:00"
+
+              },
+              "source": {
+                "type": "SqlSource",
+                "sqlReaderQuery": "select data from tkADFSrc"
+              }
+            }
+          }
+        ],
+        "start": "2016-01-01T00:00:00Z",
+        "end": "2017-01-01T00:00:00Z"
+    }
+}

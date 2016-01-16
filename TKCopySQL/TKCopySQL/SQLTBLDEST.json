@@ -1,0 +1,22 @@
+﻿{
+  "$schema": "http://datafactories.schema.management.azure.com/schemas/2015-08-01/Microsoft.DataFactory.Table.json",
+  "name": "SQLTBLDEST",
+  "properties": {
+    "type": "AzureSqlTable",
+    "linkedServiceName": "SQLDB1",
+    "structure": [
+      {
+        "name": "data",
+        "type": "String"
+      }
+    ],
+    "typeProperties": {
+      "tableName": "tkADFDst"
+    },
+    "availability": {
+      "frequency": "Day",
+      "interval": 1
+    },
+    "external": false
+  }
+}
