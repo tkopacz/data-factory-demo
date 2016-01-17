@@ -27,7 +27,7 @@ CREATE PROCEDURE [dbo].[spOverwritetkADFDst]
 				@stringData varchar(256), @date datetime2
 AS
 BEGIN
-    --DELETE FROM [dbo].[tkADFDst] -> this can be done as a part od copy process
+    --DELETE FROM [dbo].[tkADFDst] -> this can be done as a part of copy activity
     INSERT [dbo].[tkADFDst]([data])
     SELECT [data] FROM @tkADFDst
 END
