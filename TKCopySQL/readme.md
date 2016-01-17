@@ -82,4 +82,5 @@ END
 ## Additional information:
 
 [SqlSink](https://msdn.microsoft.com/en-us/library/microsoft.azure.management.datafactories.models.sqlsink.aspx)
+
 [Scheduling & Execution with Data Factory](https://azure.microsoft.com/en-us/documentation/articles/data-factory-scheduling-and-execution/)
